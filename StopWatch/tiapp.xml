@@ -3,15 +3,15 @@
     <id>com.packtpub.hotshot.stopwatch</id>
     <name>StopWatch</name>
     <version>1.0</version>
-    <publisher>Peter</publisher>
+    <publisher>Ascetic</publisher>
     <url>http://</url>
     <description/>
-    <copyright>2015 by Peter</copyright>
+    <copyright>2015 by Ascetic</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>5a03bfe9-20cb-42f4-9b1c-18d7349c85b8</guid>
+    <guid>7e6db717-08c6-4541-b2aa-88c88c3b0e81</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>

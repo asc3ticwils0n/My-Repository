@@ -1,64 +1,133 @@
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
-
-// create tab group
-var tabGroup = Titanium.UI.createTabGroup();
-
-
-//
-// create base UI tab and root window
-//
-var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
-    backgroundColor:'#fff'
+ Titanium.UI.setBackgroundColor('#000');
+var win = Titanium.UI.createWindow({
+    title:"",
+    backgroundColor:"#000",
+    exitOnClose: true 
 });
-var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
-    title:'Tab 1',
-    window:win1
+ 
+var view01 = Titanium.UI.createView({
+    backgroundColor:"#fff"
+});
+ 
+//Center this code properly. 
+var timerlabel = Titanium.UI.createLabel({
+    text: "00:00:00.0",
+    top: 0,
+    textAlign:"center", 
+    font: {
+        fontSize: 45,
+        fontWeight: 'normal'
+    }, 
+    width: 350,
+ 
+});
+ 
+// var hourlabel = Titanium.UI.createLabel({
+    // text: 'Hours',
+    // top: 55,
+    // left: 60,
+// });
+//  
+// var minlabel = Titanium.UI.createLabel({
+    // text: 'Mins',
+    // top: 55,
+    // left: 125,
+// });
+//  
+// var seclabel = Titanium.UI.createLabel({
+    // text: 'Secs',
+    // top: 55,
+    // right: 105,
+// });
+ 
+var button01 = Titanium.UI.createButton({
+   title: 'START',
+   top: 90,
+   left: 10,
+   width: 100,
+   height: 50 
+});
+ 
+var button02 = Titanium.UI.createButton({
+    title:'RESET',
+    top: 90,
+    right: 10,
+    width: 100,
+    height: 50
+});
+ 
+var button03 = Titanium.UI.createButton({
+    title:'STOP',
+    top: 150,
+    left: 10,
+    width: 100,
+    height: 50
+});
+ 
+// var button04 = Titanium.UI.createButton({
+    // title:'LAP',
+    // top: 150,
+    // right: 10,
+    // width: 100,
+    // height: 50
+// });
+
+var stopWatch = function() {
+	timerlabel.value = '00:00:00.0';
+	
+var startTimer = Date ();
+
+var countTime = function countTime() {
+	var HOUR = 60 * 60 * 1000;
+	var MINUTE = 60 * 1000;
+	var SECOND = 1000;
+	var now = new Date();
+	var diff = now.getTime() - startTimer.getTime();
+	var hr = Math.floor(diff / HOUR);
+	var min = Math.floor((diff - hr * HOUR) / MINUTE);
+	var sec = Math.floor((diff - hr * HOUR - min * MINUTE) / SECOND);
+	var msec = Math.floor(diff % SECOND);
+	timerlabel.text = ('0' + hr).slice(-2) + ':' + ('0' + min).slice(-2) + ':' + ('0' + sec).slice(-2) + '.' + ('00' + msec).slice(-1);
+};
+
+intervalid = setInterval(countTime, 3);
+button03.title = 'STOP';
+};
+
+var stopWatch = function() {
+	clearInterval(intervalid);
+};
+
+var started = false;
+var intervalid = null;
+
+button01.addEventListener('click', function(e){
+	if (!started) {
+		stopWatch();
+		started = true;
+	}
 });
 
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 1',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+button02.addEventListener('click', function(e){
+	if (started) {
+		stopWatch();
+		started = false;
+	}
+		timerlabel.value = '00:00:00.0';
 });
 
-win1.add(label1);
-
-//
-// create controls tab and root window
-//
-var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
-    backgroundColor:'#fff'
-});
-var tab2 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
-    title:'Tab 2',
-    window:win2
+button03.addEventListener('click', function(e){
+	if (started){
+		stopWatch();
+		started = false;
+	}
 });
 
-var label2 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 2',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
-});
+win.add(view01);
+win.add(button01);
+win.add(button02);
+win.add(button03);
+// win.add(button04);
+win.add(timerlabel);
 
-//win2.add(label2);
-
-
-
-//
-//  add tabs
-//
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
-
-
-// open tab group
-tabGroup.open();
+win.open();

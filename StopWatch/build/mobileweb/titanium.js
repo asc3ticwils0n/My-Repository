@@ -5,14 +5,14 @@
 var require = {
 	app: {
 		analytics: true,
-		copyright: "2015 by Peter",
+		copyright: "2015 by Ascetic",
 		deployType: "development",
 		description: "",
-		guid: "5a03bfe9-20cb-42f4-9b1c-18d7349c85b8",
+		guid: "7e6db717-08c6-4541-b2aa-88c88c3b0e81",
 		id: "com.packtpub.hotshot.stopwatch",
 		name: "StopWatch",
 		names: {},
-		publisher: "Peter",
+		publisher: "Ascetic",
 		url: "http://",
 		version: "1.0"
 	},

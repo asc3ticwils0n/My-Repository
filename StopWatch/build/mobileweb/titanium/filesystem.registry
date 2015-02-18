@@ -1,10 +1,12 @@
-ts	1423090822000
+ts	1423287765000
 Default-Landscape.png	446500
 Default-Portrait.png	56963
 Default.png	87123
+Demo.js	3120
+Hold.js	3723
 KS_nav_ui.png	748
 KS_nav_views.png	683
-app.js	1166
+app.js	2696
 appicon.png	16659
 appicon144.png	23341
 apple-touch-icon-114x114-precomposed.png	15820
@@ -167,4 +169,4 @@ titanium
 	dependencies.json	10476
 	package.json	660
 titanium.css	37391
-titanium.js	481218
+titanium.js	481222
